@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>ics/1455649003_Save.png</file>
+        <file>ics/1455649230_Folder.png</file>
+        <file>ics/1455649276_New document.png</file>
+        <file>ics/1455649283_Exit.png</file>
+        <file>ics/1455649323_Undo.png</file>
+        <file>ics/1455649328_Turn off.png</file>
+        <file>ics/1455649332_Copy.png</file>
+        <file>ics/1455649427_Paste.png</file>
+        <file>ics/1455649000_Erase.png</file>
+        <file alias="add.png">ics/1455649406_Add.png</file>
+        <file>ics/1455649423_Application.png</file>
+        <file>ics/1455649429_Repair.png</file>
+        <file>ics/1455649302_Left-right.png</file>
+        <file>ics/aaa_cent.png</file>
+        <file>ics/New Piskel.png</file>
+        <file>ics/1456296624_shape_handles.png</file>
+        <file>ics/1456296944_stock_styles-fill-format-mode.png</file>
+        <file>ics/1455649230_Folder_texture.png</file>
+    </qresource>
+</RCC>
