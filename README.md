@@ -1,5 +1,7 @@
-# game-map-editor
+# Game Map Editor
+This is a general purpose map editor for 2D games. It can be used to create game levels using texture tiles. You can simply build a multi layer maps, create animations and add multiple events or annotations to the map. 
 
-This is an old project of mine, it is no longer continued, but it works for the most part. If You want to use or modify it, feel free to do so.  All comments and UI elements are in Polish. Created in Qt Creator, using Qt 5.
+[![YouTube video](http://img.youtube.com/vi/3WjJj5PqOD4/0.jpg)](http://www.youtube.com/watch?v=3WjJj5PqOD4)
+http://www.youtube.com/watch?v=3WjJj5PqOD4
 
-Jest to mój stary projekt, który przestałem rozwijać, ale w większości działa. Jeśli chcesz go użyć lub zmodyfikować, prosze bardzo. Wszystkie komentarze i elementy UI są w języku polskim. Zrobione w Qt Creatorze, Qt wersja 5.
+This is Qt application, so to compile it, simply install QtCreator for your platform and open the MapEditor.pro file. Alternatively you can compile it using `qmake` and `make`.
