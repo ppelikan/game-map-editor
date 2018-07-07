@@ -3,7 +3,7 @@ This is a general purpose map editor for 2D games. It can be used to create game
 
 [![YouTube video](http://img.youtube.com/vi/3WjJj5PqOD4/0.jpg)](http://www.youtube.com/watch?v=3WjJj5PqOD4)
 
-http://www.youtube.com/watch?Compile=v
+http://www.youtube.com/watch?v=3WjJj5PqOD4
 
 
 ### Compiling
