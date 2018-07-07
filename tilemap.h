@@ -2,12 +2,12 @@
 #define TILEMAP_H
 
 #include <QVector>
+#include <QTextStream>
 
 class TileMap
 {
 public:
-    TileMap();
-    TileMap(int SizeX, int SizeY);
+    TileMap(int SizeX = 50, int SizeY = 50);
     ~TileMap();
 
     void setWorldSize(int x, int y);
@@ -16,6 +16,9 @@ public:
 
     int getSizeX() const;
     int getSizeY() const;
+
+    void saveLayerAsText(QTextStream &stream);
+    void clear();
 
 private:
     int WorldSizeX, WorldSizeY;

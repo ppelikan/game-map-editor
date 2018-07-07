@@ -30,6 +30,7 @@ public:
 
 signals:
     void onAnimationSelected();
+    void editingFinished();
 
 public slots:
 
@@ -48,7 +49,9 @@ private:
     QRect GrabbedAreaRect;
     int BiggestAnimation;
     int MouseHoverIndex; //-1 - brak, 0..animbuffer.size-1 - dodaj do animacji, animbuffer.size - dodaj animację
+    int RemoveIndex;     //-1 -dodaj, 0..animbuffer.size-1-usuń
     QPixmap *PlusIconImg;
+    QPixmap *DeleteIconImg;
 };
 
 #endif // ANIMATIONEDITOR_H

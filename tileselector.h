@@ -20,13 +20,14 @@ public:
     void mouseMoveEvent(QMouseEvent * ev);
     void mousePressEvent(QMouseEvent * ev);
     void leaveEvent(QEvent *);
-    void mouseReleaseEvent(QMouseEvent *);
+    void mouseReleaseEvent(QMouseEvent *ev);
     void resizeEvent(QResizeEvent *);
     void setTileBuffer(TileBuffer *tilebuffer);
     QVector<QVector<int> > getSelectedTiles();
     void IncTextureWidth();
     void DecTextureWidth();
     void setTextureWidth(int NumberOfTilesInAxisX);
+    int getTextureWidth();
 
     QPixmap *getTexture() const;
 

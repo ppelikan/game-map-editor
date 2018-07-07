@@ -10,6 +10,7 @@ AnimationBuffer::AnimationBuffer()
 AnimationBuffer::~AnimationBuffer()
 {
     timer->stop();
+    this->clear();
 }
 
 void AnimationBuffer::setTileBuffer(TileBuffer *buf)

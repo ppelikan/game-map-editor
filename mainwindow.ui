@@ -18,8 +18,8 @@
     <normaloff>:/new/prefix1/ics/New Piskel.png</normaloff>:/new/prefix1/ics/New Piskel.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
+   <layout class="QGridLayout" name="gridLayout_4">
+    <item row="0" column="0">
      <widget class="QSplitter" name="splitter">
       <property name="lineWidth">
        <number>1</number>
@@ -88,12 +88,33 @@
             <height>50</height>
            </size>
           </property>
+          <property name="tabShape">
+           <enum>QTabWidget::Rounded</enum>
+          </property>
           <property name="currentIndex">
            <number>0</number>
           </property>
+          <property name="elideMode">
+           <enum>Qt::ElideNone</enum>
+          </property>
+          <property name="usesScrollButtons">
+           <bool>true</bool>
+          </property>
+          <property name="documentMode">
+           <bool>false</bool>
+          </property>
+          <property name="tabsClosable">
+           <bool>false</bool>
+          </property>
+          <property name="movable">
+           <bool>false</bool>
+          </property>
+          <property name="tabBarAutoHide">
+           <bool>false</bool>
+          </property>
           <widget class="QWidget" name="tab">
            <attribute name="title">
-            <string>Tekstury</string>
+            <string>Textures</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout">
             <item row="0" column="0">
@@ -214,7 +235,7 @@
             <item row="1" column="0" colspan="3">
              <widget class="QLabel" name="label">
               <property name="text">
-               <string>Szerokość kratki:</string>
+               <string>Tile width:</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -228,6 +249,9 @@
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
+              </property>
+              <property name="autoFillBackground">
+               <bool>true</bool>
               </property>
               <property name="buttonSymbols">
                <enum>QAbstractSpinBox::PlusMinus</enum>
@@ -252,7 +276,7 @@
             <item row="2" column="0" colspan="3">
              <widget class="QLabel" name="label_2">
               <property name="text">
-               <string>Wysokość kratki:</string>
+               <string>Tile height:</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -266,6 +290,9 @@
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
+              </property>
+              <property name="autoFillBackground">
+               <bool>true</bool>
               </property>
               <property name="buttonSymbols">
                <enum>QAbstractSpinBox::PlusMinus</enum>
@@ -291,14 +318,14 @@
           </widget>
           <widget class="QWidget" name="tab_3">
            <attribute name="title">
-            <string>Animacje</string>
+            <string>Animations</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout_2">
             <item row="1" column="0">
              <widget class="QLabel" name="label_3">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
+                <horstretch>3</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
@@ -313,10 +340,13 @@
             <item row="1" column="1">
              <widget class="QSpinBox" name="sbFPS">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>1</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
+              </property>
+              <property name="autoFillBackground">
+               <bool>true</bool>
               </property>
               <property name="buttonSymbols">
                <enum>QAbstractSpinBox::PlusMinus</enum>
@@ -333,12 +363,12 @@
              <widget class="QLabel" name="label_4">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
+                <horstretch>3</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
               <property name="text">
-               <string>Typ ping-pong:</string>
+               <string>Ping-pong animation:</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -348,8 +378,8 @@
             <item row="2" column="1">
              <widget class="QCheckBox" name="cbPingPongAnimation">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>1</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
@@ -385,12 +415,12 @@
              <widget class="QLabel" name="label_7">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
+                <horstretch>3</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
               <property name="text">
-               <string>Usuń zaznaczoną animację:</string>
+               <string>Delete selected:</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -407,29 +437,37 @@
             </size>
            </property>
            <attribute name="title">
-            <string>Warstwy</string>
+            <string>Layers</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout_3">
-            <item row="0" column="0">
-             <widget class="QPushButton" name="btAddLayer">
+            <item row="2" column="3">
+             <widget class="QSpinBox" name="sbLayerHeight">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>1</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
-              <property name="text">
+              <property name="autoFillBackground">
+               <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::PlusMinus</enum>
+              </property>
+              <property name="specialValueText">
                <string/>
               </property>
-              <property name="icon">
-               <iconset resource="menuicons.qrc">
-                <normaloff>:/new/prefix1/add.png</normaloff>:/new/prefix1/add.png</iconset>
+              <property name="suffix">
+               <string/>
               </property>
-              <property name="iconSize">
-               <size>
-                <width>16</width>
-                <height>16</height>
-               </size>
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>2000</number>
+              </property>
+              <property name="value">
+               <number>50</number>
               </property>
              </widget>
             </item>
@@ -459,23 +497,16 @@
             <item row="0" column="2" colspan="2">
              <widget class="QComboBox" name="cbSelectLayer"/>
             </item>
-            <item row="1" column="0" colspan="3">
-             <widget class="QLabel" name="label_5">
-              <property name="text">
-               <string>Szerokość:</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
             <item row="1" column="3">
              <widget class="QSpinBox" name="sbLayerWidth">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>1</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
+              </property>
+              <property name="autoFillBackground">
+               <bool>true</bool>
               </property>
               <property name="buttonSymbols">
                <enum>QAbstractSpinBox::PlusMinus</enum>
@@ -490,57 +521,206 @@
                <number>1</number>
               </property>
               <property name="maximum">
-               <number>50000</number>
+               <number>2000</number>
               </property>
               <property name="value">
                <number>50</number>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QPushButton" name="btAddLayer">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="menuicons.qrc">
+                <normaloff>:/new/prefix1/add.png</normaloff>:/new/prefix1/add.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>16</width>
+                <height>16</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0" colspan="3">
+             <widget class="QLabel" name="label_5">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>3</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Width:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
               </property>
              </widget>
             </item>
             <item row="2" column="0" colspan="3">
              <widget class="QLabel" name="label_6">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>3</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="text">
-               <string>Wysokość:</string>
+               <string>Height:</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
               </property>
              </widget>
             </item>
-            <item row="2" column="3">
-             <widget class="QSpinBox" name="sbLayerHeight">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
+            <item row="3" column="0" colspan="4">
+             <widget class="QCheckBox" name="cbTransparent">
+              <property name="enabled">
+               <bool>false</bool>
               </property>
-              <property name="buttonSymbols">
-               <enum>QAbstractSpinBox::PlusMinus</enum>
-              </property>
-              <property name="specialValueText">
-               <string/>
-              </property>
-              <property name="suffix">
-               <string/>
-              </property>
-              <property name="minimum">
-               <number>1</number>
-              </property>
-              <property name="maximum">
-               <number>50000</number>
-              </property>
-              <property name="value">
-               <number>50</number>
+              <property name="text">
+               <string>Show all layers</string>
               </property>
              </widget>
             </item>
            </layout>
           </widget>
           <widget class="QWidget" name="tab_4">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <attribute name="title">
-            <string>Zdarzenia</string>
+            <string>Events</string>
            </attribute>
+           <layout class="QGridLayout" name="gridLayout_5">
+            <item row="0" column="0" rowspan="4">
+             <widget class="QListWidget" name="lwEventList">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="sizeIncrement">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="baseSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="sizeAdjustPolicy">
+               <enum>QAbstractScrollArea::AdjustToContents</enum>
+              </property>
+              <property name="resizeMode">
+               <enum>QListView::Fixed</enum>
+              </property>
+              <property name="layoutMode">
+               <enum>QListView::SinglePass</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QPushButton" name="btAddEvent">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="menuicons.qrc">
+                <normaloff>:/new/prefix1/add.png</normaloff>:/new/prefix1/add.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>16</width>
+                <height>16</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2">
+             <widget class="QPushButton" name="btDeleteEvent">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="menuicons.qrc">
+                <normaloff>:/new/prefix1/ics/1455649000_Erase.png</normaloff>:/new/prefix1/ics/1455649000_Erase.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>16</width>
+                <height>16</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1" colspan="2">
+             <widget class="QLabel" name="label_8">
+              <property name="text">
+               <string>Place/
+remove:</string>
+              </property>
+              <property name="textFormat">
+               <enum>Qt::PlainText</enum>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignHCenter|Qt::AlignTop</set>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1" rowspan="2" colspan="2">
+             <widget class="QPushButton" name="btPlaceEvent">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="menuicons.qrc">
+                <normaloff>:/new/prefix1/ics/1455649429_Repair.png</normaloff>:/new/prefix1/ics/1455649429_Repair.png</iconset>
+              </property>
+              <property name="autoDefault">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </widget>
          </widget>
         </item>
@@ -571,7 +751,7 @@
               <x>0</x>
               <y>0</y>
               <width>278</width>
-              <height>155</height>
+              <height>185</height>
              </rect>
             </property>
             <property name="sizePolicy">
@@ -598,7 +778,7 @@
               <x>0</x>
               <y>0</y>
               <width>278</width>
-              <height>82</height>
+              <height>53</height>
              </rect>
             </property>
            </widget>
@@ -659,7 +839,7 @@
              <x>0</x>
              <y>0</y>
              <width>451</width>
-             <height>386</height>
+             <height>394</height>
             </rect>
            </property>
           </widget>
@@ -677,23 +857,23 @@
      <x>0</x>
      <y>0</y>
      <width>753</width>
-     <height>24</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuPlik">
     <property name="title">
-     <string>Plik</string>
+     <string>File</string>
     </property>
     <widget class="QMenu" name="menuExportuj_warstw">
      <property name="title">
-      <string>Exportuj warstwę</string>
+      <string>Export layer</string>
      </property>
      <addaction name="actionJako_grafik"/>
      <addaction name="actionJako_plik_tekstowy"/>
     </widget>
     <widget class="QMenu" name="menuExportuj_textur">
      <property name="title">
-      <string>Exportuj texturę</string>
+      <string>Export texture</string>
      </property>
      <addaction name="actionJako_plik_graficzny"/>
      <addaction name="actionJako_osobne_pliki_graficzne"/>
@@ -711,8 +891,11 @@
    </widget>
    <widget class="QMenu" name="menuEdycja">
     <property name="title">
-     <string>Edycja</string>
+     <string>Edit</string>
     </property>
+    <addaction name="actionCofnij"/>
+    <addaction name="actionPowt_rz"/>
+    <addaction name="separator"/>
     <addaction name="actionZaznacz"/>
     <addaction name="actionKopiuj"/>
     <addaction name="actionWklej"/>
@@ -721,15 +904,17 @@
    </widget>
    <widget class="QMenu" name="menuPomoc">
     <property name="title">
-     <string>Pomoc</string>
+     <string>Help</string>
     </property>
     <addaction name="actionJak_korzysta_z_programu"/>
     <addaction name="actionO_programie"/>
    </widget>
    <widget class="QMenu" name="menuWidok">
     <property name="title">
-     <string>Widok</string>
+     <string>View</string>
     </property>
+    <addaction name="actionPoka_zdarzenia"/>
+    <addaction name="actionPoka_wszystkie_warstwy"/>
    </widget>
    <addaction name="menuPlik"/>
    <addaction name="menuEdycja"/>
@@ -753,6 +938,9 @@
    <addaction name="actionOtw_rz"/>
    <addaction name="actionZapisz"/>
    <addaction name="separator"/>
+   <addaction name="actionCofnij"/>
+   <addaction name="actionPowt_rz"/>
+   <addaction name="separator"/>
    <addaction name="actionZaznacz"/>
    <addaction name="actionKopiuj"/>
    <addaction name="actionWklej"/>
@@ -765,7 +953,7 @@
      <normaloff>:/new/prefix1/ics/1455649276_New document.png</normaloff>:/new/prefix1/ics/1455649276_New document.png</iconset>
    </property>
    <property name="text">
-    <string>Nowy</string>
+    <string>New</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
@@ -777,7 +965,7 @@
      <normaloff>:/new/prefix1/ics/1455649230_Folder.png</normaloff>:/new/prefix1/ics/1455649230_Folder.png</iconset>
    </property>
    <property name="text">
-    <string>Otwórz</string>
+    <string>Open</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
@@ -789,7 +977,7 @@
      <normaloff>:/new/prefix1/ics/1455649003_Save.png</normaloff>:/new/prefix1/ics/1455649003_Save.png</iconset>
    </property>
    <property name="text">
-    <string>Zapisz</string>
+    <string>Save</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
@@ -797,7 +985,7 @@
   </action>
   <action name="actionZapisz_jako">
    <property name="text">
-    <string>Zapisz jako</string>
+    <string>Save as</string>
    </property>
   </action>
   <action name="action">
@@ -811,12 +999,12 @@
      <normaloff>:/new/prefix1/ics/1455649283_Exit.png</normaloff>:/new/prefix1/ics/1455649283_Exit.png</iconset>
    </property>
    <property name="text">
-    <string>Zakończ</string>
+    <string>Exit</string>
    </property>
   </action>
   <action name="actionJak_korzysta_z_programu">
    <property name="text">
-    <string>Jak korzystać z programu?</string>
+    <string>How to use this program?</string>
    </property>
    <property name="shortcut">
     <string>F1</string>
@@ -828,27 +1016,27 @@
      <normaloff>:/new/prefix1/ics/New Piskel.png</normaloff>:/new/prefix1/ics/New Piskel.png</iconset>
    </property>
    <property name="text">
-    <string>O programie...</string>
+    <string>About...</string>
    </property>
   </action>
   <action name="actionJako_grafik">
    <property name="text">
-    <string>Jako grafikę</string>
+    <string>As image</string>
    </property>
   </action>
   <action name="actionJako_plik_tekstowy">
    <property name="text">
-    <string>Jako plik tekstowy</string>
+    <string>As text file</string>
    </property>
   </action>
   <action name="actionJako_osobne_pliki_graficzne">
    <property name="text">
-    <string>Jako osobne pliki graficzne</string>
+    <string>As separate image files</string>
    </property>
   </action>
   <action name="actionJako_plik_graficzny">
    <property name="text">
-    <string>Jako plik graficzny</string>
+    <string>As image file</string>
    </property>
   </action>
   <action name="actionWype_nij">
@@ -857,7 +1045,7 @@
      <normaloff>:/new/prefix1/ics/1456296944_stock_styles-fill-format-mode.png</normaloff>:/new/prefix1/ics/1456296944_stock_styles-fill-format-mode.png</iconset>
    </property>
    <property name="text">
-    <string>Wypełnij</string>
+    <string>Fill</string>
    </property>
   </action>
   <action name="actionZaznacz">
@@ -869,7 +1057,7 @@
      <normaloff>:/new/prefix1/ics/1456296624_shape_handles.png</normaloff>:/new/prefix1/ics/1456296624_shape_handles.png</iconset>
    </property>
    <property name="text">
-    <string>Zaznacz</string>
+    <string>Select</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+G</string>
@@ -884,7 +1072,7 @@
      <normaloff>:/new/prefix1/ics/1455649332_Copy.png</normaloff>:/new/prefix1/ics/1455649332_Copy.png</iconset>
    </property>
    <property name="text">
-    <string>Kopiuj</string>
+    <string>Copy</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+C</string>
@@ -899,7 +1087,7 @@
      <normaloff>:/new/prefix1/ics/1455649427_Paste.png</normaloff>:/new/prefix1/ics/1455649427_Paste.png</iconset>
    </property>
    <property name="text">
-    <string>Wklej</string>
+    <string>Paste</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+V</string>
@@ -911,7 +1099,50 @@
      <normaloff>:/new/prefix1/ics/1455649230_Folder_texture.png</normaloff>:/new/prefix1/ics/1455649230_Folder_texture.png</iconset>
    </property>
    <property name="text">
-    <string>Wczytaj texturę [32x32px]</string>
+    <string>Load texture [32x32px]</string>
+   </property>
+  </action>
+  <action name="actionPoka_zdarzenia">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show events</string>
+   </property>
+  </action>
+  <action name="actionPoka_wszystkie_warstwy">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show all layers</string>
+   </property>
+  </action>
+  <action name="actionCofnij">
+   <property name="icon">
+    <iconset resource="menuicons.qrc">
+     <normaloff>:/new/prefix1/ics/1455649323_Undo.png</normaloff>:/new/prefix1/ics/1455649323_Undo.png</iconset>
+   </property>
+   <property name="text">
+    <string>Undo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
+  </action>
+  <action name="actionPowt_rz">
+   <property name="icon">
+    <iconset resource="menuicons.qrc">
+     <normaloff>:/new/prefix1/ics/1455649015_Redo.png</normaloff>:/new/prefix1/ics/1455649015_Redo.png</iconset>
+   </property>
+   <property name="text">
+    <string>Redo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+Z</string>
    </property>
   </action>
  </widget>

@@ -8,7 +8,8 @@ TileBuffer::TileBuffer()
 
 TileBuffer::~TileBuffer()
 {
-
+    qDeleteAll(TileImages);
+    TileImages.clear();
 }
 
 int TileBuffer::LoadImage(QString FileName)
@@ -77,6 +78,7 @@ int TileBuffer::getCount()
 
 QPixmap *TileBuffer::getTilePixmapAt(int index)
 {
+    if (index < 0 ) return NULL;
     if (index < TileImages.size())
         return TileImages.at(index);
     else

@@ -6,14 +6,14 @@
 #include <QLabel>
 #include <QMessageBox>
 #include <QScrollBar>
-//#include <QMatrix>
+#include <QListWidgetItem>
 
 #include "tileselector.h"
 #include "tiledmapeditor.h"
-#include "tilemap.h"
-#include "tilebuffer.h"
-#include "animationbuffer.h"
 #include "animationeditor.h"
+#include "entirelevel.h"
+#include "levelundostack.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -51,53 +51,55 @@ private slots:
     void on_btAddLayer_clicked();
     void on_btDeleteLayer_clicked();
     void on_cbSelectLayer_currentIndexChanged(int index);
-
     void on_actionJak_korzysta_z_programu_triggered();
-
     void on_actionO_programie_triggered();
-
     void on_actionNowy_triggered();
-
     void on_actionJako_grafik_triggered();
-
     void on_actionJako_plik_tekstowy_triggered();
-
     void on_actionJako_plik_graficzny_triggered();
-
     void on_actionJako_osobne_pliki_graficzne_triggered();
-
     void on_actionWype_nij_triggered();
-
     void on_splitter_splitterMoved(int, int);
-
     void on_actionZaznacz_triggered();
-
     void on_actionKopiuj_triggered();
-
     void on_actionWklej_triggered();
-
     void on_actionWczytaj_textur_o_rozmiarach_triggered();
+    void on_cbTransparent_stateChanged(int);
+    void on_btAddEvent_clicked();
+    void on_lwEventList_itemDoubleClicked(QListWidgetItem *item);
+    void on_btDeleteEvent_clicked();
+    void on_btPlaceEvent_clicked();
+    void on_tabWidget_currentChanged(int index);
+    void on_actionPoka_zdarzenia_triggered();
+    void on_actionPoka_wszystkie_warstwy_triggered();
+    void on_actionCofnij_triggered();
+    void on_actionPowt_rz_triggered();
 
 private:
+    void closeEvent(QCloseEvent *event);
     void resizeEvent( QResizeEvent * );
+    void applyLevelToWidgets();
+    bool promptNotSaved();
 
     Ui::MainWindow *ui;
+
     TileSelector *Selector;
-    TileBuffer *Buffer;
     TiledMapEditor *Editor;
-    QVector<TileMap *> Layers;
-    AnimationBuffer *AnimBuffer;
     AnimationEditor *AnimEditor;
     QVector<QVector<int> > Clipboard;
 
     QLabel *slCursorPos;
     QLabel *slCursorMapSize;
     QLabel *slFileName;
+    QLabel *slHints;
 
     QString CurrentFileName;
     QString FilesPath;
     void LoadSettings();
     void SaveSettings();
+
+    EntireLevel *Level;
+    LevelUndoStack *UndoStack;
 };
 
 #endif // MAINWINDOW_H

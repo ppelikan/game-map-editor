@@ -11,6 +11,9 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = MapEditor
 TEMPLATE = app
 
+TRANSLATIONS += \
+    translations/MapEditor_en.ts \
+    translations/MapEditor_pl.ts \
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -20,7 +23,11 @@ SOURCES += main.cpp\
     tileselector.cpp \
     animationbuffer.cpp \
     animationeditor.cpp \
-    tiledselectablewidget.cpp
+    tiledselectablewidget.cpp \
+    neweventdialog.cpp \
+    eventmatrix.cpp \
+    entirelevel.cpp \
+    levelundostack.cpp
 
 HEADERS  += mainwindow.h \
     tilebuffer.h \
@@ -29,9 +36,14 @@ HEADERS  += mainwindow.h \
     tileselector.h \
     animationbuffer.h \
     animationeditor.h \
-    tiledselectablewidget.h
+    tiledselectablewidget.h \
+    neweventdialog.h \
+    eventmatrix.h \
+    entirelevel.h \
+    levelundostack.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    neweventdialog.ui
 
 RESOURCES += \
     menuicons.qrc

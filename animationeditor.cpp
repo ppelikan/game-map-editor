@@ -8,6 +8,7 @@ AnimationEditor::AnimationEditor(QWidget *parent) : QWidget(parent)
     BiggestAnimation = 0;
     MouseHoverIndex =-1;
     PlusIconImg = new QPixmap(":/new/prefix1/add.png");
+    DeleteIconImg = new QPixmap(":/new/prefix1/ics/1455649000_Erase.png");
 }
 
 AnimationEditor::~AnimationEditor()
@@ -28,6 +29,14 @@ void AnimationEditor::setAnimationBuffer(AnimationBuffer *animbuffer)
 {
     AnimBuffer = animbuffer;
     CursorTiles.clear();
+    this->setMinimumHeight(TileSizeY*(AnimBuffer->Animations.size()+1));
+
+    BiggestAnimation=0;
+    for(int i=0;i<AnimBuffer->Animations.count();i++)
+        if ( BiggestAnimation < AnimBuffer->Animations[i].Frames.size() )
+            BiggestAnimation = AnimBuffer->Animations[i].Frames.size();
+
+    this->setMinimumWidth(TileSizeX*2 + 5 + BiggestAnimation*TileSizeX);
     this->repaint();
 }
 
@@ -35,6 +44,7 @@ void AnimationEditor::paintEvent(QPaintEvent *)
 {
 
     QPainter pt(this);
+    QPixmap *frame;
 
     pt.fillRect(this->rect(),Qt::SolidPattern);
 
@@ -42,20 +52,27 @@ void AnimationEditor::paintEvent(QPaintEvent *)
 
     if (Buffer->getCount() > 0)
     {
-        if (AnimBuffer->Animations.size() > 0){
-
+        if (AnimBuffer->Animations.size() > 0)
+        {
             for (int i=0;i<AnimBuffer->Animations.size(); i++)
             {
                 if (AnimBuffer->Animations[i].Frames.size() > 0)
-                    pt.drawPixmap(0,i*TileSizeY, *AnimBuffer->getFramePixmap(i));
+                {
+                    frame = AnimBuffer->getFramePixmap(i);
+                    if (frame != NULL)
+                        pt.drawPixmap(0,i*TileSizeY, *frame);
+                }
 
                 for (int j=0;j<AnimBuffer->Animations[i].Frames.size(); j++)
                 {
-                    pt.drawPixmap(j*TileSizeX + TileSizeX + 5, i*TileSizeY, *Buffer->getTilePixmapAt( AnimBuffer->Animations[i].Frames[j] ) );
+                    frame = Buffer->getTilePixmapAt( AnimBuffer->Animations[i].Frames[j] );
+                    if (frame != NULL)
+                        pt.drawPixmap(j*TileSizeX + TileSizeX + 5, i*TileSizeY, *frame );
                 }
             }
 
             pt.setPen(Qt::red);
+            pt.setBrush(QColor(255,250,250,45));
             pt.drawRect(GrabbedAreaRect);
             if (isMouseHovering && ! isMouseDown)
             {
@@ -64,16 +81,30 @@ void AnimationEditor::paintEvent(QPaintEvent *)
             }
         }
     }
+
     if (MouseHoverIndex >= 0)
     {
+
         if (MouseHoverIndex >= AnimBuffer->Animations.size())
+        {
             pt.drawPixmap(TileSizeX + 5 +TileSizeX/2 - PlusIconImg->width()/2
                           , AnimBuffer->Animations.size()*TileSizeY + TileSizeY/2 - PlusIconImg->height()/2 ,
                           *PlusIconImg);
+        }
         else
-            pt.drawPixmap(AnimBuffer->Animations[MouseHoverIndex].Frames.size()*TileSizeX+TileSizeX+5 + TileSizeX/2 - PlusIconImg->width()/2 ,
-                          MouseHoverIndex*TileSizeY + TileSizeY/2 - PlusIconImg->height()/2 ,
-                          *PlusIconImg);
+        {
+            if ((RemoveIndex < AnimBuffer->Animations[MouseHoverIndex].Frames.size()))
+            {
+                if ((RemoveIndex >=0))
+                    pt.drawPixmap(TileSizeX+5+ RemoveIndex*TileSizeX + TileSizeX/2 - DeleteIconImg->width()/2 ,
+                                  MouseHoverIndex*TileSizeY + TileSizeY/2 - DeleteIconImg->height()/2 ,
+                                  *DeleteIconImg);
+            }
+            else
+                pt.drawPixmap(AnimBuffer->Animations[MouseHoverIndex].Frames.size()*TileSizeX+TileSizeX+5 + TileSizeX/2 - PlusIconImg->width()/2 ,
+                              MouseHoverIndex*TileSizeY + TileSizeY/2 - PlusIconImg->height()/2 ,
+                              *PlusIconImg);
+        }
     }
 }
 
@@ -82,7 +113,9 @@ void AnimationEditor::mouseMoveEvent(QMouseEvent *ev)
     if (ev->pos().y()/TileSizeY >= AnimBuffer->Animations.size())
     {
         MouseHoverIndex = AnimBuffer->Animations.size();
+        HiglightRect.moveTo(-1000,-1000);
     } else
+    {
         if (ev->pos().x() <= TileSizeX)
         {
             if (isMouseDown)
@@ -100,9 +133,15 @@ void AnimationEditor::mouseMoveEvent(QMouseEvent *ev)
             }
             isMouseHovering = true;
             isMouseDown = ev->buttons() & Qt::LeftButton;
-            MouseHoverIndex = -1;
+            // MouseHoverIndex = -1;
+            RemoveIndex = -1;
         } else
-            MouseHoverIndex = (ev->y()/TileSizeY);
+        {
+            RemoveIndex = ((ev->x()-TileSizeX-5)/TileSizeX);
+            HiglightRect.moveTo(-1000,-1000);
+        }
+        MouseHoverIndex = (ev->y()/TileSizeY);
+    }
     this->repaint();
 }
 
@@ -117,24 +156,52 @@ void AnimationEditor::mousePressEvent(QMouseEvent *ev)
         GrabbedAreaRect.setHeight(TileSizeY);
         isMouseDown = true;
     } else
-        if (CursorTiles.size() > 0 )
-        {
-            int index = ev->pos().y()/TileSizeY;
+    {
+        int index = ev->pos().y()/TileSizeY;
 
-            if (index >= AnimBuffer->Animations.size())
+        if (index < AnimBuffer->Animations.size())
+        {
+            if (RemoveIndex >= AnimBuffer->Animations[index].Frames.size() )
+            {
+                if (CursorTiles.size() > 0 )
+                {
+                    AddFramesFromCursorTo(index);
+                    emit editingFinished();
+
+                    if ( BiggestAnimation < AnimBuffer->Animations[index].Frames.size() )
+                        BiggestAnimation = AnimBuffer->Animations[index].Frames.size();
+                }
+            }
+            else
+            {
+                if (RemoveIndex >= 0)
+                {
+                    AnimBuffer->Animations[index].Frames.remove(RemoveIndex);
+                    if (AnimBuffer->Animations[index].Frames.size() <= 0)
+                    {
+                        AnimBuffer->Animations.remove(index);
+                    }
+                    emit editingFinished();
+                    AnimBuffer->syncAllAnimations();
+                }
+            }
+        }
+        else
+        {
+            //            if (index >= AnimBuffer->Animations.size())
             {
                 AddAnimation();
                 index = AnimBuffer->Animations.size()-1;
+                AddFramesFromCursorTo(index);
+                emit editingFinished();
+                if ( BiggestAnimation < AnimBuffer->Animations[index].Frames.size() )
+                    BiggestAnimation = AnimBuffer->Animations[index].Frames.size();
             }
-
-            AddFramesFromCursorTo(index);
-
-            if ( BiggestAnimation < AnimBuffer->Animations[index].Frames.size() )
-                BiggestAnimation = AnimBuffer->Animations[index].Frames.size();
         }
+    }
 
     this->setMinimumHeight(TileSizeY*(AnimBuffer->Animations.size()+1));
-    this->setMinimumWidth(TileSizeX + 5 + BiggestAnimation*TileSizeX);
+    this->setMinimumWidth(TileSizeX*2 + 5 + BiggestAnimation*TileSizeX);
 
     MouseHoverIndex =-1;
     this->repaint();
@@ -148,6 +215,7 @@ void AnimationEditor::mouseReleaseEvent(QMouseEvent *ev)
         emit onAnimationSelected();
     }
     MouseHoverIndex =-1;
+    mouseMoveEvent(ev);
     this->repaint();
 }
 
@@ -190,5 +258,6 @@ void AnimationEditor::AddFramesFromCursorTo(int AnimationIndex)
             AnimBuffer->Animations[AnimationIndex].Frames.append(CursorTiles[j][i]);
         }
     AnimBuffer->syncAllAnimations();
+    emit editingFinished();
 }
 

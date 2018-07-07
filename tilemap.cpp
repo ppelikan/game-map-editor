@@ -1,23 +1,11 @@
 #include "tilemap.h"
 
-TileMap::TileMap()
-{
-//Map = new QVector<int(50);
-//    for (int i=0;i<50;i++)
-//        Map[i] = new QVector(50);
-        Map.fill(QVector<int>().fill(0,50),50);
-        WorldSizeX=50;
-        WorldSizeY=50;
-}
-
 TileMap::TileMap(int SizeX, int SizeY)
 {
-   // Map = new QVector(SizeY);
 
     Map.fill(QVector<int>().fill(0,SizeX),SizeY);
     WorldSizeX=SizeX;
     WorldSizeY=SizeY;
-    //setWorldSize(SizeX,SizeY);  //redundantnte, wiem... ale inaczej się wykszacza
 }
 
 TileMap::~TileMap()
@@ -25,7 +13,7 @@ TileMap::~TileMap()
     Map.clear();
 }
 
-void TileMap::setWorldSize(int x, int y)
+void TileMap::setWorldSize(int x,  int y)
 {
     WorldSizeX=x;
     WorldSizeY=y;
@@ -37,7 +25,8 @@ void TileMap::setWorldSize(int x, int y)
 
 int TileMap::getTileAt(int x, int y)
 {
-    // return Map[x][y];
+    if (x>=WorldSizeX) return 0;
+    if (y>=WorldSizeY) return 0;
     return Map.at(y).at(x);
 }
 
@@ -47,11 +36,35 @@ void TileMap::setTileAt(int x, int y, int Tile)
 }
 int TileMap::getSizeX() const
 {
+    if (WorldSizeX > 100000)
+        return 1;
     return WorldSizeX;
 }
 int TileMap::getSizeY() const
 {
+    if (WorldSizeY > 100000)
+        return 1;
     return WorldSizeY;
+}
+
+void TileMap::saveLayerAsText(QTextStream &stream)
+{
+    stream << "MAP SIZE X: " << QString::number(this->getSizeX()) << endl;
+    stream << "MAP SIZE Y: " << QString::number(this->getSizeY()) << endl << endl;
+
+    for (int j=0;j<this->getSizeY(); j++)
+    {
+        for (int i=0;i<this->getSizeX(); i++)
+        {
+            stream << QString::number( this->getTileAt(i,j) ) << " ";
+        }
+        stream << endl;
+    }
+}
+
+void TileMap::clear()
+{
+   Map.clear();
 }
 
 

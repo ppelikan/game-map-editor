@@ -7,6 +7,8 @@ TileSelector::TileSelector(QWidget *parent) : QWidget(parent)
     QPainter pt(TilesImageBuf);
     pt.fillRect(TilesImageBuf->rect(), Qt::SolidPattern);
     NumTilesInAxisX = 5;
+    isMouseHovering = false;
+    isMouseDown = false;
 }
 
 TileSelector::~TileSelector()
@@ -19,13 +21,12 @@ void TileSelector::paintEvent(QPaintEvent *)
     QPainter pt(this);
     pt.fillRect(this->rect(),Qt::SolidPattern);
     pt.drawPixmap(0,0,*TilesImageBuf);
-    //pt.setPen(Qt::yellow);
     if (Buffer->getCount() <= 0) return;
+    pt.setBrush(QColor(255,250,250,45));
     pt.setPen(Qt::red);
-    pt.drawRect(GrabbedAreaRect);
+    pt.drawRect(GrabbedAreaRect.adjusted(0,0,-1,-1));
     if (isMouseHovering && ! isMouseDown)
     {
-        //pt.setPen(Qt::darkRed);
         pt.drawRect(HiglightRect);
     }
 }
@@ -83,9 +84,13 @@ void TileSelector::leaveEvent(QEvent *)
     this->repaint();
 }
 
-void TileSelector::mouseReleaseEvent(QMouseEvent *)
+void TileSelector::mouseReleaseEvent(QMouseEvent *ev)
 {
     isMouseDown = false;
+    HiglightRect.setLeft((ev->x()/TileSizeX)*TileSizeX);
+    HiglightRect.setTop((ev->y()/TileSizeY)*TileSizeY);
+    HiglightRect.setWidth(TileSizeX);
+    HiglightRect.setHeight(TileSizeY);
     emit onTilesSelected();
 }
 
@@ -147,6 +152,11 @@ void TileSelector::setTextureWidth(int NumberOfTilesInAxisX)
     repaintBuffer();
 }
 
+int TileSelector::getTextureWidth()
+{
+    return NumTilesInAxisX;
+}
+
 QPixmap *TileSelector::getTexture() const
 {
     return TilesImageBuf;
@@ -189,8 +199,7 @@ void TileSelector::repaintBuffer()
 
     QPainter pt(TilesImageBuf);
     pt.fillRect(TilesImageBuf->rect(), Qt::SolidPattern);
-    //    for (int j=0; j<TilesImageBuf->height()/TileSizeY; j++)
-    //        for (int i=0; i<TilesImageBuf->width()/TileSizeX; i++)
+
     int xx=0;
     int yy=0;
     for (int i=0; i<Buffer->getCount(); i++)
@@ -202,7 +211,5 @@ void TileSelector::repaintBuffer()
         {xx =0;
             yy++; }
     }
-    //    for (;xx>TilesImageBuf->width()/TileSizeX -1; xx++)
-    //        pt.draw
 }
 

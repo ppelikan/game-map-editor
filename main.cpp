@@ -1,9 +1,20 @@
 #include "mainwindow.h"
 #include <QApplication>
+#include <QTranslator>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+    QTranslator translator;
+#ifdef QT_DEBUG
+    if (translator.load(QLocale(QLocale::Polish, QLocale::Poland), "MapEditor", ("_"), ("translations/")))
+        a.installTranslator(&translator);
+#else
+    if (translator.load(QLocale(), "MapEditor", ("_"), ("translations/")))
+        a.installTranslator(&translator);
+#endif
+
     MainWindow w;
     w.show();
 
@@ -13,10 +24,7 @@ int main(int argc, char *argv[])
 /*
  * TODO
  *
--sprawdzanie czy nie próbujemy odwołać się do tekstury out of range (złwaszcza po otwarciu pliku)
--context menu dla animacji, dla klatek animacji, dla kratem mapy
--możliwość umieszczania adnotacji w dowolnym miejscu planszy (gra może interpretować te adnotacje jako np. umieszenie jakiegoś ruchomego obiektu, albo punkt startu gry, albo meta, albo wroga postać)
-
+-context menu dla animacji, dla klatek animacji, dla kratek mapy
 
 tileselector
 -addtile - dodaje klocek o podanej grafice pixmap
@@ -59,6 +67,12 @@ mapa/warstwa 0
 mapa/warstwa 1
 mapa/warstwa 2
 ...
+nagłówek początku eventów
+ilość eventów
+event 0
+event 1
+event 3
+...
 nagłówek końca pliku
 
 
@@ -82,6 +96,16 @@ wartość 20
 wartość 01
 wartość 11
 wartość 21
+...
+
+--------------------
+sekcja event:
+nazwa
+parametry
+ilość na mapie
+położenie xy 0
+położenie xy 1
+położenie xy 2
 ...
 
 */

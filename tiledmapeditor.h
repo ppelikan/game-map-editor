@@ -9,6 +9,7 @@
 #include "tilebuffer.h"
 #include "tilemap.h"
 #include "animationbuffer.h"
+#include "eventmatrix.h"
 
 class TiledMapEditor : public QWidget
 {
@@ -24,7 +25,7 @@ public:
     void paintEvent(QPaintEvent *);
     void mouseMoveEvent(QMouseEvent *ev);
     void mousePressEvent(QMouseEvent *ev);
-    void mouseReleaseEvent(QMouseEvent *);
+    void mouseReleaseEvent(QMouseEvent *ev);
     void leaveEvent(QEvent *);
 
     void setTileSize(int x, int y);
@@ -34,15 +35,21 @@ public:
     void setVisibleRect(QRect rect);
     void setSelectionMode(bool mode);
     bool isInSelectionMode();
-    QVector<QVector<int> > getSelectionMap();
+    QVector <QVector<int> > getSelectionMap();
     QRect getSelectionRect();
     void fillWithTileCursor();
 
     QPixmap *getMapPixmap() const;
 
+    void addTransparentLayer(TileMap * map);
+    void setEventMatrix(EventMatrix *ev);
+    void showEventMatrix();
+    void hideEventMatrix();
+
 signals:
     void mouseMove(int x, int y);
     void scrollDir(int x, int y);
+    void editingFinished();
 
 public slots:
 
@@ -51,6 +58,7 @@ private:
 //    QPixmap *MapImg;
     QRect VisibleRect;
     int TileSizeX, TileSizeY;
+    bool isModified;
     bool isMouseHovering;
     bool isMouseDown;
     bool isSelectionModeOn;
@@ -61,6 +69,9 @@ private:
     TileBuffer *Buffer;
     TileMap *Map;
     AnimationBuffer * AnimBuffer;
+    QVector<TileMap * > TranMaps;
+    EventMatrix *Matrix;
+    bool isMatrixVisible;
 };
 
 #endif // TILEDMAPEDITOR_H

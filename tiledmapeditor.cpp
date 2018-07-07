@@ -5,7 +5,10 @@ TiledMapEditor::TiledMapEditor(QWidget *parent) : QWidget(parent)
     isMouseHovering=false;
     isMouseDown = false;
     setMouseTracking(true);
-    //   MapImg = new QPixmap(TileSizeX*50,TileSizeY*50);
+    TileSizeX = 32;
+    TileSizeY = 32;
+    isSelectionModeOn=false;
+    isModified = false;
 }
 
 TiledMapEditor::~TiledMapEditor()
@@ -26,7 +29,7 @@ void TiledMapEditor::setTileMap(TileMap *tilemap)
 {
     Map = tilemap;
     this->setMinimumSize(Map->getSizeX()*TileSizeX,Map->getSizeY( )*TileSizeY);
-    //repaintMapImg();
+    TranMaps.clear();
     this->repaint();
 }
 
@@ -38,6 +41,8 @@ void TiledMapEditor::setAnimationBuffer(AnimationBuffer *animbuffer)
 void TiledMapEditor::paintEvent(QPaintEvent *)
 {
     QPainter pt(this);
+    pt.setBackground(Qt::black);
+    QPixmap *frame;
 
     if (Buffer->getCount() <= 0)
     {
@@ -50,21 +55,85 @@ void TiledMapEditor::paintEvent(QPaintEvent *)
         {
             if (Map->getTileAt(i,j) < Buffer->getCount())
             {
-
                 if (Map->getTileAt(i,j) < 0)
-                    pt.drawPixmap(i*TileSizeX,
-                                  j*TileSizeY,
-                                  *AnimBuffer->getFramePixmap(- Map->getTileAt(i,j) -1 )); else
+                {
+                    frame = AnimBuffer->getFramePixmap(- Map->getTileAt(i,j) -1 );
+                    if (frame != NULL)
+                        pt.drawPixmap(i*TileSizeX,
+                                      j*TileSizeY,
+                                      *frame );
+                }
+                else
                     pt.drawPixmap(i*TileSizeX,
                                   j*TileSizeY,
                                   *Buffer->getTilePixmapAt(Map->getTileAt(i,j)));
             }
         }
 
+    if (TranMaps.count() > 0)
+    {
+        pt.setOpacity(0.3);
+        for (int k=0; k<TranMaps.count(); k++)
+        {
+            for (int j=VisibleRect.top();j<VisibleRect.bottom(); j++)
+                for (int i=VisibleRect.left();i<VisibleRect.right(); i++)
+                {
+                    if (TranMaps[k]->getTileAt(i,j) < Buffer->getCount())
+                    {
+                        if (TranMaps[k]->getTileAt(i,j) < 0)
+                        {
+                            frame = AnimBuffer->getFramePixmap(- TranMaps[k]->getTileAt(i,j) -1 );
+                            if (frame != NULL)
+                                pt.drawPixmap(i*TileSizeX,
+                                              j*TileSizeY,
+                                              *frame );
+                        }
+                        else
+                            pt.drawPixmap(i*TileSizeX,
+                                          j*TileSizeY,
+                                          *Buffer->getTilePixmapAt(TranMaps[k]->getTileAt(i,j)));
+                    }
+                }
+        }
+        pt.setOpacity(1);
+    }
+
+    if (isMatrixVisible)
+    {
+        QTextOption opt(Qt::AlignCenter);
+        opt.setWrapMode( QTextOption::WrapAtWordBoundaryOrAnywhere );
+
+        QFont font = pt.font() ;
+        font.setPointSize( 8 );
+        pt.setFont(font);
+        pt.setBrush(Qt::black);
+
+        for (int j=VisibleRect.top();j<VisibleRect.bottom(); j++)
+            for (int i=VisibleRect.left();i<VisibleRect.right(); i++)
+            {
+                if ( Matrix->getNumsAt(i,j) != NULL )
+                {
+                    if (! Matrix->getNumsAt(i,j)->isEmpty())
+                    {
+                        QString sBuf = Matrix->getAllNamesAt(i,j);
+
+                        pt.setOpacity(0.5);
+                        pt.setPen(Qt::transparent);
+                        pt.drawRect(QRect(i*TileSizeX,j*TileSizeY,TileSizeX,TileSizeY));
+                        pt.setOpacity(1);
+                        pt.setPen(Qt::white);
+                        pt.drawText(QRect(i*TileSizeX+1,j*TileSizeY-1,TileSizeX,TileSizeY), sBuf, opt);
+                    }
+                }
+            }
+    }
+    pt.setBrush(Qt::transparent);
+    pt.setBrush(QColor(255,250,250,45));
+
     if (isSelectionModeOn)
     {
         pt.setPen(Qt::red);
-        pt.drawRect(SelectionRect);
+        pt.drawRect(SelectionRect.adjusted(0,0,-1,-1));
 
         if (! isMouseDown)
             if (isMouseHovering)
@@ -79,9 +148,13 @@ void TiledMapEditor::paintEvent(QPaintEvent *)
                             (Cursor.y()+j < Map->getSizeY()))
                     {
                         if (CursorTiles[j][i] < 0)
+                        {
+                            frame = AnimBuffer->getFramePixmap( - CursorTiles[j][i] -1 );
+                            if (frame != NULL)
                             pt.drawPixmap((Cursor.x()+i)*TileSizeX,
                                           (Cursor.y()+j)*TileSizeY,
-                                          *AnimBuffer->getFramePixmap( - CursorTiles[j][i] -1 ));
+                                          *frame);
+                        }
                         else
                             pt.drawPixmap((Cursor.x()+i)*TileSizeX,
                                           (Cursor.y()+j)*TileSizeY,
@@ -131,11 +204,11 @@ void TiledMapEditor::mouseMoveEvent(QMouseEvent * ev)
                         Map->setTileAt((Cursor.x()+i),
                                        (Cursor.y()+j),
                                        CursorTiles[j][i] );
+            isModified = true;
         }
         emit scrollDir(ev->pos().x()/TileSizeX, ev->pos().y()/TileSizeY);
     }
     emit mouseMove(ev->pos().x()/TileSizeX, ev->pos().y()/TileSizeY);
-    //repaintMapImg();
     this->repaint();
 }
 
@@ -143,6 +216,9 @@ void TiledMapEditor::mousePressEvent(QMouseEvent *ev)
 {
     if (ev->x() > Map->getSizeX()*TileSizeX) return;
     if (ev->y() > Map->getSizeY()*TileSizeY) return;
+
+    Cursor.setX(ev->pos().x()/TileSizeX);
+    Cursor.setY(ev->pos().y()/TileSizeY);
 
     if (isSelectionModeOn)
     {
@@ -159,15 +235,20 @@ void TiledMapEditor::mousePressEvent(QMouseEvent *ev)
                     Map->setTileAt((Cursor.x()+i),
                                    (Cursor.y()+j),
                                    CursorTiles[j][i] );
+        isModified = true;
     }
     isMouseDown = true;
-    //   repaintMapImg();
     this->repaint();
 }
 
-void TiledMapEditor::mouseReleaseEvent(QMouseEvent *)
+void TiledMapEditor::mouseReleaseEvent(QMouseEvent *ev)
 {
     isMouseDown=false;
+    Cursor.setX(ev->pos().x()/TileSizeX);
+    Cursor.setY(ev->pos().y()/TileSizeY);
+    if (isModified)
+        emit editingFinished();
+    isModified = false;
 }
 
 void TiledMapEditor::leaveEvent(QEvent *)
@@ -186,7 +267,6 @@ void TiledMapEditor::setTileSize(int x, int y)
     TileSizeX = x;
     TileSizeY = y;
     this->setMinimumSize(Map->getSizeX()*TileSizeX,Map->getSizeY( )*TileSizeY);
-    //  repaintMapImg();
     this->repaint();
 }
 
@@ -285,7 +365,7 @@ void TiledMapEditor::fillWithTileCursor()
         ty++;
         if (ty >= CursorTiles.size()) ty = 0;
     }
-
+    emit editingFinished();
     this->repaint();
 }
 
@@ -312,33 +392,22 @@ QPixmap *TiledMapEditor::getMapPixmap() const
     return img;
 }
 
-//void TiledMapEditor::repaintMapImg()
-//{
-////    if (MapImg != NULL)
-//        delete MapImg;
-//    MapImg = new QPixmap(TileSizeX*Map->getSizeX(),TileSizeY*Map->getSizeY());
+void TiledMapEditor::addTransparentLayer(TileMap *map)
+{
+    TranMaps.append(map);
+}
 
-//    this->setMinimumSize(Map->getSizeX()*TileSizeX,Map->getSizeY( )*TileSizeY);
+void TiledMapEditor::showEventMatrix()
+{
+    isMatrixVisible = true;
+}
 
-//    if (Buffer->getCount() <= 0) return;
+void TiledMapEditor::hideEventMatrix()
+{
+    isMatrixVisible = false;
+}
 
-//    QPainter pt(MapImg);
-
-//    for (int j=0;j<Map->getSizeY(); j++)
-//        for (int i=0;i<Map->getSizeX(); i++)
-//        {
-//            //         if (Map->getTileAt(i,j) < Buffer->getCount())
-//            //       {
-//            //                if (Map->getTileAt(i,j) < 0)
-//            //                    pt.drawPixmap(i*TileSizeX,
-//            //                                  j*TileSizeY,
-//            //                                  *AnimBuffer->getFramePixmap(- Map->getTileAt(i,j) -1 )); else
-//            if (Map->getTileAt(i,j) >= 0)
-//                pt.drawPixmap(i*TileSizeX,
-//                              j*TileSizeY,
-//                              *Buffer->getTilePixmapAt(Map->getTileAt(i,j)));
-//            //     }
-//        }
-//    this->repaint();
-
-//}
+void TiledMapEditor::setEventMatrix(EventMatrix *ev)
+{
+    Matrix = ev;
+}
