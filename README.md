@@ -3,8 +3,8 @@ This is a general purpose map editor for 2D games. It can be used to create game
 
 [![YouTube video](http://img.youtube.com/vi/3WjJj5PqOD4/0.jpg)](http://www.youtube.com/watch?v=3WjJj5PqOD4)
 
-http://www.youtube.com/watch?v=3WjJj5PqOD4
-
+Getting started YouTube video: http://www.youtube.com/watch?v=3WjJj5PqOD4<br>
+Download compiled ready to use version here: https://ppelikan.itch.io/map-editor
 
 ### Compiling
 
