@@ -389,7 +389,7 @@ void MainWindow::on_actionO_programie_triggered()
     msgBox.setIconPixmap( QPixmap(":/new/prefix1/ics/New Piskel.png") );
     msgBox.setText(" ~ Map Editor ~");
     QString bb = "\n(2016) \nby Pawel Pelikan \nppelikan@gmail.com";
-    msgBox.setInformativeText(tr("Super simple level editor for games. \n\nIf this software was somehow useful for you, feel free to share your opinion with me.\n")+bb);
+    msgBox.setInformativeText(tr("Super simple level editor for games. \n\nIf this software was somehow useful for you or you have found some bugs, feel free to share your opinion with me.\n")+bb);
     msgBox.setStandardButtons(QMessageBox::Ok );
     msgBox.exec();
 }

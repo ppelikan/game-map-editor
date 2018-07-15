@@ -6,380 +6,389 @@
     <message>
         <location filename="../mainwindow.ui" line="14"/>
         <source>Map Editor</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="117"/>
         <source>Textures</source>
-        <translation type="unfinished">Tekstury</translation>
+        <translation>Tekstury</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="238"/>
         <source>Tile width:</source>
-        <translation type="unfinished">Szerokość:</translation>
+        <translation>Szerokość:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="276"/>
+        <location filename="../mainwindow.ui" line="279"/>
         <source>Tile height:</source>
-        <translation type="unfinished">Wysokość:</translation>
+        <translation>Wysokość:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="315"/>
+        <location filename="../mainwindow.ui" line="321"/>
         <source>Animations</source>
-        <translation type="unfinished">Animacje</translation>
+        <translation>Animacje</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="362"/>
+        <location filename="../mainwindow.ui" line="371"/>
         <source>Ping-pong animation:</source>
-        <translation type="unfinished">Animacja typu ping-pong:</translation>
+        <translation>Animacja typu ping-pong:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="414"/>
+        <location filename="../mainwindow.ui" line="423"/>
         <source>Delete selected:</source>
-        <translation type="unfinished">Usuń zaznaczoną:</translation>
+        <translation>Usuń zaznaczoną:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="431"/>
+        <location filename="../mainwindow.ui" line="440"/>
         <source>Layers</source>
-        <translation type="unfinished">Warstwy</translation>
+        <translation>Warstwy</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="548"/>
+        <location filename="../mainwindow.ui" line="563"/>
         <source>Width:</source>
-        <translation type="unfinished">Szerokość:</translation>
+        <translation>Szerokość:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="564"/>
+        <location filename="../mainwindow.ui" line="579"/>
         <source>Height:</source>
-        <translation type="unfinished">Wysokość:</translation>
+        <translation>Wysokość:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="577"/>
-        <location filename="../mainwindow.ui" line="1086"/>
+        <location filename="../mainwindow.ui" line="592"/>
+        <location filename="../mainwindow.ui" line="1121"/>
         <source>Show all layers</source>
-        <translation type="unfinished">Pokaż wszystkie warstwy</translation>
+        <translation>Pokaż wszystkie warstwy</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="591"/>
+        <location filename="../mainwindow.ui" line="606"/>
         <source>Events</source>
-        <translation type="unfinished">Zdarzenia</translation>
+        <translation>Zdarzenia</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="830"/>
+        <location filename="../mainwindow.ui" line="689"/>
+        <source>Place/
+remove:</source>
+        <translation>Umieść/
+usuń:</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="865"/>
         <source>File</source>
-        <translation type="unfinished">Plik</translation>
+        <translation>Plik</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="834"/>
+        <location filename="../mainwindow.ui" line="869"/>
         <source>Export layer</source>
-        <translation type="unfinished">Eksportuj warstwę</translation>
+        <translation>Eksportuj warstwę</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="841"/>
+        <location filename="../mainwindow.ui" line="876"/>
         <source>Export texture</source>
-        <translation type="unfinished">Eksportuj teksturę</translation>
+        <translation>Eksportuj teksturę</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="859"/>
+        <location filename="../mainwindow.ui" line="894"/>
         <source>Edit</source>
-        <translation type="unfinished">Edycja</translation>
+        <translation>Edycja</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="872"/>
+        <location filename="../mainwindow.ui" line="907"/>
         <source>Help</source>
-        <translation type="unfinished">Pomoc</translation>
+        <translation>Pomoc</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="879"/>
+        <location filename="../mainwindow.ui" line="914"/>
         <source>View</source>
-        <translation type="unfinished">Widok</translation>
+        <translation>Widok</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="921"/>
+        <location filename="../mainwindow.ui" line="956"/>
         <source>New</source>
-        <translation type="unfinished">Nowy</translation>
+        <translation>Nowy</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="933"/>
+        <location filename="../mainwindow.ui" line="968"/>
         <source>Open</source>
-        <translation type="unfinished">Otwórz</translation>
+        <translation>Otwórz</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="945"/>
+        <location filename="../mainwindow.ui" line="980"/>
         <source>Save</source>
-        <translation type="unfinished">Zapisz</translation>
+        <translation>Zapisz</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="953"/>
+        <location filename="../mainwindow.ui" line="988"/>
         <source>Save as</source>
-        <translation type="unfinished">Zapisz jako</translation>
+        <translation>Zapisz jako</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="967"/>
+        <location filename="../mainwindow.ui" line="1002"/>
         <source>Exit</source>
-        <translation type="unfinished">Zakończ</translation>
+        <translation>Zakończ</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="972"/>
-        <location filename="../mainwindow.cpp" line="379"/>
+        <location filename="../mainwindow.ui" line="1007"/>
+        <location filename="../mainwindow.cpp" line="380"/>
         <source>How to use this program?</source>
-        <translation type="unfinished">Jak korzystać z programu?</translation>
+        <translation>Jak korzystać z programu?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="984"/>
+        <location filename="../mainwindow.ui" line="1019"/>
         <source>About...</source>
-        <translation type="unfinished">O programie...</translation>
+        <translation>O programie...</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="989"/>
+        <location filename="../mainwindow.ui" line="1024"/>
         <source>As image</source>
-        <translation type="unfinished">Jako grafikę</translation>
+        <translation>Jako grafikę</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="994"/>
+        <location filename="../mainwindow.ui" line="1029"/>
         <source>As text file</source>
-        <translation type="unfinished">Jako plik tekstowy</translation>
+        <translation>Jako plik tekstowy</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="999"/>
+        <location filename="../mainwindow.ui" line="1034"/>
         <source>As separate image files</source>
-        <translation type="unfinished">Jako osobne pliki graficzne</translation>
+        <translation>Jako osobne pliki graficzne</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1004"/>
+        <location filename="../mainwindow.ui" line="1039"/>
         <source>As image file</source>
-        <translation type="unfinished">Jako plik graficzny</translation>
+        <translation>Jako plik graficzny</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1013"/>
+        <location filename="../mainwindow.ui" line="1048"/>
         <source>Fill</source>
-        <translation type="unfinished">Wypełnij</translation>
+        <translation>Wypełnij</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1025"/>
+        <location filename="../mainwindow.ui" line="1060"/>
         <source>Select</source>
-        <translation type="unfinished">Zaznacz</translation>
+        <translation>Zaznacz</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1040"/>
+        <location filename="../mainwindow.ui" line="1075"/>
         <source>Copy</source>
-        <translation type="unfinished">Kopiuj</translation>
+        <translation>Kopiuj</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1055"/>
+        <location filename="../mainwindow.ui" line="1090"/>
         <source>Paste</source>
-        <translation type="unfinished">Wklej</translation>
+        <translation>Wklej</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1067"/>
+        <location filename="../mainwindow.ui" line="1102"/>
         <source>Load texture [32x32px]</source>
-        <translation type="unfinished">Wczytaj texturę [32x32px]</translation>
+        <translation>Wczytaj texturę [32x32px]</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="1113"/>
+        <source>Show events</source>
+        <translation>Pokaż zdarzenia</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="1130"/>
+        <source>Undo</source>
+        <translation>Cofnij</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="1142"/>
+        <source>Redo</source>
+        <translation>Ponów</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="263"/>
+        <location filename="../mainwindow.ui" line="304"/>
+        <source>px</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="333"/>
+        <source>FPS:</source>
+        <translation>Klatki na sekundę (FPS):</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="959"/>
+        <source>Ctrl+N</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="971"/>
+        <source>Ctrl+O</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="983"/>
+        <source>Ctrl+S</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="993"/>
+        <source>-</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="1010"/>
+        <source>F1</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="1063"/>
+        <source>Ctrl+G</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="1078"/>
-        <source>Show events</source>
-        <translation type="unfinished">Pokaż zdarzenia</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.ui" line="1095"/>
-        <source>Undo</source>
-        <translation type="unfinished">Cofnij</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.ui" line="1107"/>
-        <source>Redo</source>
-        <translation type="unfinished">Ponów</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.ui" line="260"/>
-        <location filename="../mainwindow.ui" line="298"/>
-        <source>px</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.ui" line="327"/>
-        <source>FPS:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.ui" line="924"/>
-        <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.ui" line="936"/>
-        <source>Ctrl+O</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.ui" line="948"/>
-        <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.ui" line="958"/>
-        <source>-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.ui" line="975"/>
-        <source>F1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.ui" line="1028"/>
-        <source>Ctrl+G</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.ui" line="1043"/>
         <source>Ctrl+C</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1058"/>
+        <location filename="../mainwindow.ui" line="1093"/>
         <source>Ctrl+V</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1098"/>
+        <location filename="../mainwindow.ui" line="1133"/>
         <source>Ctrl+Z</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="1110"/>
+        <location filename="../mainwindow.ui" line="1145"/>
         <source>Ctrl+Shift+Z</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="108"/>
-        <location filename="../mainwindow.cpp" line="262"/>
+        <location filename="../mainwindow.cpp" line="263"/>
         <source>Import textures</source>
-        <translation type="unfinished">Import textures</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="108"/>
-        <location filename="../mainwindow.cpp" line="262"/>
-        <source>Image files (*.png *.jpg *.bmp) 
-All files (*)</source>
-        <translation type="unfinished">Pliki graficzne (*.png *.jpg *.bmp) 
-Wszystkie pliki (*)</translation>
+        <translation>Import textures</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="192"/>
         <source>Open map</source>
-        <translation type="unfinished">Otwórz mapę</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="192"/>
-        <source>Level files (*.map *.txp *.bin *.dat) 
-All files (*)</source>
-        <translation type="unfinished">Pliki map (*.map *.txp *.bin *.dat) 
-Wszystkie pliki (*)</translation>
+        <translation>Otwórz mapę</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="225"/>
         <source>This map does not have textures file linked. Please open texture manually.</source>
-        <translation type="unfinished">Ta plansza nie posiada załączonego pliku textur. Wczytaj texturę ręcznie.</translation>
+        <translation>Ta plansza nie posiada załączonego pliku textur. Wczytaj texturę ręcznie.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="246"/>
+        <location filename="../mainwindow.cpp" line="247"/>
         <source>Save map</source>
-        <translation type="unfinished">Zapisz mapę</translation>
+        <translation>Zapisz mapę</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="246"/>
+        <location filename="../mainwindow.cpp" line="247"/>
         <source>MAP Files (*.map);;TXP Files (*.txp);;BIN Files (*.bin);;DAT Files (*.dat);;All files (*)</source>
-        <translation type="unfinished">Pliki MAP (*.map);;Pliki TXP (*.txp);;Pliki BIN (*.bin);;Piki DAT (*.dat);;Wszystkie pliki (*)</translation>
+        <translation>Pliki MAP (*.map);;Pliki TXP (*.txp);;Pliki BIN (*.bin);;Piki DAT (*.dat);;Wszystkie pliki (*)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="276"/>
+        <location filename="../mainwindow.cpp" line="277"/>
         <source>Do you want to proceed?</source>
-        <translation type="unfinished">Czy chcesz kontynuować?</translation>
+        <translation>Czy chcesz kontynuować?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="278"/>
+        <location filename="../mainwindow.cpp" line="279"/>
         <source>This operation cannot be undone! Deleting selected textures will modify the level.</source>
-        <translation type="unfinished">Tej opcji nie da się cofnąć! Usunięcie wybranych tekstur spowoduje bezpowrotną modyfikację planszy.</translation>
+        <translation>Tej opcji nie da się cofnąć! Usunięcie wybranych tekstur spowoduje bezpowrotną modyfikację planszy.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="380"/>
+        <location filename="../mainwindow.cpp" line="381"/>
         <source>1. Set the tile size of the textures you are willing to use. 
 2. Open textures. 
 3. Set the map size of the layer. 
 4. Draw the level using tiles form the texture window. 
 5. Save the level.</source>
-        <translation type="unfinished">1. Wybierz wymiary kafelków tekstury, jaką zamierzasz użyć 
+        <translation>1. Wybierz wymiary kafelków tekstury, jaką zamierzasz użyć 
  2. Wczytaj teksturę. 
  3. Ustaw wymiary warstwy jakie powinna mieć plansza. 
  4. Narysuj planszę używając kafelków z okna tekstur. 
  5. Zapisz planszę.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="391"/>
+        <location filename="../mainwindow.cpp" line="108"/>
+        <location filename="../mainwindow.cpp" line="263"/>
+        <source>Image files (*.png *.jpg *.bmp) 
+All files (*)</source>
+        <translation>Pliki graficzne (*.png *.jpg *.bmp) 
+Wszystkie pliki (*)</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="192"/>
+        <source>Level files (*.map *.txp *.bin *.dat) 
+All files (*)</source>
+        <translation>Pliki plansz (*.map *.txp *.bin *.dat) 
+Wszystkie pliki (*)</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="392"/>
         <source>Super simple level editor for games. 
 
+If this software was somehow useful for you or you have found some bugs, feel free to share your opinion with me.
 </source>
-        <translation type="unfinished">Bardzo prosty i uniwersalny edytor plansz do gier. 
+        <translation type="unfinished">Bardzo prosty edytor plansz do gier. 
 
+Jeśli ten program w jakikolwiek sposób okazał się użyteczny lub znalazłeś błąd, proszę podziel się ze mną swoją opinią.
 </translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="402"/>
+        <location filename="../mainwindow.cpp" line="404"/>
         <source>Unnamed</source>
-        <translation type="unfinished">Bez nazwy</translation>
+        <translation>Bez nazwy</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="415"/>
+        <location filename="../mainwindow.cpp" line="418"/>
         <source>Export map as image</source>
-        <translation type="unfinished">Eksportuj mapę jako grafikę</translation>
+        <translation>Eksportuj mapę jako grafikę</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="415"/>
-        <location filename="../mainwindow.cpp" line="447"/>
-        <location filename="../mainwindow.cpp" line="459"/>
+        <location filename="../mainwindow.cpp" line="418"/>
+        <location filename="../mainwindow.cpp" line="450"/>
+        <location filename="../mainwindow.cpp" line="462"/>
         <source>PNG Files (*.png);;JPEG Files (*.jpg);;BMP Files (*.bmp);;All files (*)</source>
-        <translation type="unfinished">Pliki PNG (*.png);;Pliki JPEG (*.jpg);;Pliki BMP (*.bmp);;Wszystkie pliki (*)</translation>
+        <translation>Pliki PNG (*.png);;Pliki JPEG (*.jpg);;Pliki BMP (*.bmp);;Wszystkie pliki (*)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="428"/>
+        <location filename="../mainwindow.cpp" line="431"/>
         <source>Export map as text</source>
-        <translation type="unfinished">Eksportuj mapę jako tekst</translation>
+        <translation>Eksportuj mapę jako tekst</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="428"/>
+        <location filename="../mainwindow.cpp" line="431"/>
         <source>Text file (*.txt);;All files (*)</source>
-        <translation type="unfinished">Plik tekstowy (*.txt);;Wszystkie pliki (*)</translation>
+        <translation>Plik tekstowy (*.txt);;Wszystkie pliki (*)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="447"/>
+        <location filename="../mainwindow.cpp" line="450"/>
         <source>Export texture as image</source>
-        <translation type="unfinished">Eksportuj texturę jako grafikę</translation>
+        <translation>Eksportuj texturę jako grafikę</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="459"/>
+        <location filename="../mainwindow.cpp" line="462"/>
         <source>Select directory to export texture as separate image files</source>
-        <translation type="unfinished">Wybierz folder by wksportować texturę jako osobne grafiki</translation>
+        <translation>Wybierz folder by wksportować texturę jako osobne grafiki</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="522"/>
+        <location filename="../mainwindow.cpp" line="525"/>
         <source>Open textures [</source>
-        <translation type="unfinished">Wczytaj texturę [</translation>
+        <translation>Wczytaj texturę [</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="550"/>
+        <location filename="../mainwindow.cpp" line="553"/>
         <source>Do you want to save current level before closing it?</source>
-        <translation type="unfinished">Czy zapisać bieżącą planszę przed jej zamknięciem?</translation>
+        <translation>Czy zapisać bieżącą planszę przed jej zamknięciem?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="643"/>
+        <location filename="../mainwindow.cpp" line="646"/>
         <source>Add new event</source>
-        <translation type="unfinished">Dodaj nowe zdarzenie</translation>
+        <translation>Dodaj nowe zdarzenie</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="657"/>
+        <location filename="../mainwindow.cpp" line="660"/>
         <source>Edit event</source>
-        <translation type="unfinished">Edytuj zdarzenie</translation>
+        <translation>Edytuj zdarzenie</translation>
     </message>
 </context>
 <context>
@@ -392,12 +401,12 @@ Wszystkie pliki (*)</translation>
     <message>
         <location filename="../neweventdialog.ui" line="29"/>
         <source>Parameters:</source>
-        <translation type="unfinished"></translation>
+        <translation>Parametry:</translation>
     </message>
     <message>
         <location filename="../neweventdialog.ui" line="61"/>
         <source>Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nazwa:</translation>
     </message>
 </context>
 </TS>

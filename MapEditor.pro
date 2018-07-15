@@ -23,7 +23,6 @@ SOURCES += main.cpp\
     tileselector.cpp \
     animationbuffer.cpp \
     animationeditor.cpp \
-    tiledselectablewidget.cpp \
     neweventdialog.cpp \
     eventmatrix.cpp \
     entirelevel.cpp \
@@ -36,7 +35,6 @@ HEADERS  += mainwindow.h \
     tileselector.h \
     animationbuffer.h \
     animationeditor.h \
-    tiledselectablewidget.h \
     neweventdialog.h \
     eventmatrix.h \
     entirelevel.h \
@@ -47,3 +45,8 @@ FORMS    += mainwindow.ui \
 
 RESOURCES += \
     menuicons.qrc
+
+RC_FILE = mapeditor.rc
+
+DISTFILES += \
+    mapeditor.rc
