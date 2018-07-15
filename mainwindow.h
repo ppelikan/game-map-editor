@@ -75,6 +75,8 @@ private slots:
     void on_actionCofnij_triggered();
     void on_actionPowt_rz_triggered();
 
+    void on_actionExport_level_as_JSON_triggered();
+
 private:
     void closeEvent(QCloseEvent *event);
     void resizeEvent( QResizeEvent * );

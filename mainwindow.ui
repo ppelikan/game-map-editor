@@ -884,6 +884,7 @@ remove:</string>
     <addaction name="actionZapisz_jako"/>
     <addaction name="separator"/>
     <addaction name="actionWczytaj_textur_o_rozmiarach"/>
+    <addaction name="actionExport_level_as_JSON"/>
     <addaction name="menuExportuj_warstw"/>
     <addaction name="menuExportuj_textur"/>
     <addaction name="separator"/>
@@ -1143,6 +1144,11 @@ remove:</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+Z</string>
+   </property>
+  </action>
+  <action name="actionExport_level_as_JSON">
+   <property name="text">
+    <string>Export level as JSON file</string>
    </property>
   </action>
  </widget>

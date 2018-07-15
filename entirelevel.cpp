@@ -73,8 +73,6 @@ void EntireLevel::saveToStream(QDataStream &out)
                 if (Matrix->getNumsAt(i,j) != NULL)
                     if (Matrix->getNumsAt(i,j)->contains(k))
                     {
-                        //out << (int) i;
-                        //out << (int) j;
                         bf.append(QPoint(i,j));
                     }
             }
@@ -131,14 +129,10 @@ void EntireLevel::loadFromStream(QDataStream &in)
     in >> buf_int;
     in >> buf_int;
 
-    //    qDeleteAll(Layers); //wywołujemy destrukotyry
-    //    Layers.clear();     //usuwamy wskaźniki
-
     int num_layers;
     in >> num_layers;
 
     qDebug() << "Load, layers count: " << num_layers;
-    //  ui->cbSelectLayer->clear();
     int maxx = 0,maxy = 0;
     for (int k=0; k<num_layers; k++ )
     {
@@ -148,7 +142,6 @@ void EntireLevel::loadFromStream(QDataStream &in)
         Layers[k]->setWorldSize(buf_int,buf_int2);
         if (maxx < buf_int) maxx = buf_int;
         if (maxy < buf_int2) maxy = buf_int2;
-        //  ui->cbSelectLayer->addItem(QString::number(k+1));
         for (int j=0; j<Layers[k]->getSizeY(); j++)
             for (int i=0; i<Layers[k]->getSizeX(); i++)
             {
@@ -166,7 +159,6 @@ void EntireLevel::loadFromStream(QDataStream &in)
         in >> buf_str;
         in >> buf_str2;
         Matrix->createNewEvent(buf_str,buf_str2);
-        // ui->lwEventList->addItem( buf_str );
         in >> buf_int2;
         for(int i=0;i<buf_int2;i++)
         {
@@ -178,6 +170,98 @@ void EntireLevel::loadFromStream(QDataStream &in)
     }
     in >> buf_int;
     in >> buf_int;
+}
+
+void saveJson(QJsonDocument document, QString fileName) {
+    QFile jsonFile(fileName);
+    jsonFile.open(QFile::WriteOnly);
+    jsonFile.write(document.toJson(QJsonDocument::Compact));
+    jsonFile.close();
+}
+
+void EntireLevel::saveToJSON(QString FileName)
+{
+    QJsonObject jObj;
+
+    jObj["level-name"] = Name;
+    jObj["tile-sizeX"] = Buffer->getTileSizeX();
+    jObj["tile-sizeY"] = Buffer->getTileSizeY();
+
+    QJsonArray jAnim;
+    for (int i=0; i<AnimBuffer->Animations.size(); i++)
+    {
+        QJsonObject j;
+        QJsonArray f;
+        j["is-ping-pong"] = AnimBuffer->Animations[i].isPingPong;
+        j["fps"] = AnimBuffer->Animations[i].Fps;
+        for (int j=0;j<AnimBuffer->Animations[i].Frames.size(); j++)
+        {
+            f.append( AnimBuffer->Animations[i].Frames[j] );
+        }
+        j["frames"] = f;
+        jAnim.append(j);
+    }
+
+    QJsonArray jLay;
+    for (int k=0; k<Layers.size(); k++ )
+    {
+        QJsonObject j;
+        QJsonArray ty;
+        j["sizeX"] = Layers[k]->getSizeX();
+        j["sizeY"] = Layers[k]->getSizeY();
+        for (int j=0; j<Layers[k]->getSizeY(); j++)
+        {
+            QJsonArray tx;
+            for (int i=0; i<Layers[k]->getSizeX(); i++)
+            {
+                tx.append( Layers[k]->getTileAt(i,j) );
+            }
+            ty.append( tx );
+        }
+        j["tiles"] = ty;
+        jLay.append(j);
+    }
+
+    QVector<QPoint> bf;
+    QJsonArray jEve;
+    for(int k=0;k<Matrix->getCount();k++)
+    {
+        for (int j=0; j<Matrix->getSizeY(); j++)
+        {
+            for (int i=0; i<Matrix->getSizeX(); i++)
+            {
+                if (Matrix->getNumsAt(i,j) != NULL)
+                    if (Matrix->getNumsAt(i,j)->contains(k))
+                    {
+                        bf.append(QPoint(i,j));
+                    }
+            }
+        }
+
+        QJsonObject j;
+        QJsonArray lp;
+        j["name"] = Matrix->getEvent(k)->Name;
+        j["parameters"] = Matrix->getEvent(k)->Params;
+
+        for (int i=0; i<bf.count(); i++)
+        {
+            QJsonArray pt;
+            pt.append( bf.at(i).x() );
+            pt.append( bf.at(i).y() );
+            lp.append( pt );
+        }
+        bf.clear();
+
+        j["level-positions"] = lp;
+        jEve.append(j);
+    }
+    jObj["animations"] = jAnim;
+    jObj["layers"] = jLay;
+    jObj["events"] = jEve;
+
+    QJsonDocument d;
+    d.setObject(jObj);
+    saveJson(d,FileName);
 }
 
 void EntireLevel::setName(QString s)
@@ -193,9 +277,8 @@ void EntireLevel::clearAll()
 
 void EntireLevel::clear()
 {
-    qDeleteAll(Layers); //wywołujemy destrukotyry
-    Layers.clear();     //usuwamy wskaźniki
-    //Buffer->clear();
+    qDeleteAll(Layers);
+    Layers.clear();
     AnimBuffer->clear();
     Matrix->clear();
 }

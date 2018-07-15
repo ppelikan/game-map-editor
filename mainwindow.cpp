@@ -746,3 +746,23 @@ void MainWindow::on_actionPowt_rz_triggered()
     Editor->setCursorTiles(bf);
     AnimEditor->setCursorTiles(bf);
 }
+
+void MainWindow::on_actionExport_level_as_JSON_triggered()
+{
+    QFileDialog dial( this, tr("Export level as JSON file"),FilesPath,tr("JSON file (*.json);;All files (*)"));
+    dial.setDefaultSuffix(".json");
+    dial.setAcceptMode(QFileDialog::AcceptSave);
+    if (! dial.exec() ) return;
+    QString fileName = dial.selectedFiles().at(0);
+    if (fileName == "") return;
+    FilesPath = QFileInfo(fileName).absolutePath();
+
+    Level->saveToJSON( fileName );
+//    QFile file( fileName );
+//    if ( file.open(QIODevice::WriteOnly) )
+//    {
+//        QTextStream stream( &file );
+//        Level->Layers[ui->cbSelectLayer->currentIndex()]->saveLayerAsText(stream);
+//        file.close();
+//    }
+}

@@ -3,6 +3,10 @@
 
 #include <QVector>
 
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+
 #include "tilemap.h"
 #include "tilebuffer.h"
 #include "animationbuffer.h"
@@ -18,6 +22,7 @@ public:
 //    int getTileHeight();
     void saveToStream(QDataStream &out);
     void loadFromStream(QDataStream &in);
+    void saveToJSON(QString FileName);
     void setName(QString s);
     void clear();
     void clearAll();
