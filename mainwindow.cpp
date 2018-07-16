@@ -3,6 +3,7 @@
 #include <QFileDialog>
 #include "neweventdialog.h"
 #include <QTextStream>
+#include <QInputDialog>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -181,7 +182,7 @@ void MainWindow::on_actionZapisz_triggered()
     QDataStream out(&file);
 
     Level->saveToStream(out);
-
+    file.close();
     Selector->getTexture()->save(CurrentFileName+".png");
     UndoStack->notifySaved();
 }
@@ -202,6 +203,7 @@ void MainWindow::on_actionOtw_rz_triggered()
     QDataStream in(&file);    // read the data serialized from the file
 
     Level->loadFromStream(in);
+    file.close();
 
     ui->sbTileWidth->setValue( Level->Buffer->getTileSizeX() );
     ui->sbTileHeight->setValue( Level->Buffer->getTileSizeY() );
@@ -401,7 +403,8 @@ void MainWindow::on_actionNowy_triggered()
     Level->clearAll();
     Level->Layers.append( new TileMap() );
 
-    slFileName->setText(tr("Unnamed"));
+    Level->setName( tr("Unnamed"));
+    slFileName->setText( Level->Name );
 
     if (UndoStack != NULL)
         delete UndoStack;
@@ -758,11 +761,15 @@ void MainWindow::on_actionExport_level_as_JSON_triggered()
     FilesPath = QFileInfo(fileName).absolutePath();
 
     Level->saveToJSON( fileName );
-//    QFile file( fileName );
-//    if ( file.open(QIODevice::WriteOnly) )
-//    {
-//        QTextStream stream( &file );
-//        Level->Layers[ui->cbSelectLayer->currentIndex()]->saveLayerAsText(stream);
-//        file.close();
-//    }
+}
+
+void MainWindow::on_actionSet_level_name_triggered()
+{
+    bool ok;
+    QString text = QInputDialog::getText(this, tr("Set level name"),
+                                         tr("Level name:"), QLineEdit::Normal,
+                                         Level->Name , &ok);
+    if (ok /* && !text.isEmpty() */)
+        Level->setName( text );
+    slFileName->setText( Level->Name );
 }

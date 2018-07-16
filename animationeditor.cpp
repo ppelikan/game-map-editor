@@ -48,6 +48,7 @@ void AnimationEditor::paintEvent(QPaintEvent *)
 
     pt.fillRect(this->rect(),Qt::SolidPattern);
 
+    pt.setPen(Qt::white);
     pt.drawLine(TileSizeX + 3, 0, TileSizeX + 2, this->height());
 
     if (Buffer->getCount() > 0)

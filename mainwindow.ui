@@ -884,6 +884,8 @@ remove:</string>
     <addaction name="actionZapisz_jako"/>
     <addaction name="separator"/>
     <addaction name="actionWczytaj_textur_o_rozmiarach"/>
+    <addaction name="actionSet_level_name"/>
+    <addaction name="separator"/>
     <addaction name="actionExport_level_as_JSON"/>
     <addaction name="menuExportuj_warstw"/>
     <addaction name="menuExportuj_textur"/>
@@ -1149,6 +1151,11 @@ remove:</string>
   <action name="actionExport_level_as_JSON">
    <property name="text">
     <string>Export level as JSON file</string>
+   </property>
+  </action>
+  <action name="actionSet_level_name">
+   <property name="text">
+    <string>Set level name</string>
    </property>
   </action>
  </widget>

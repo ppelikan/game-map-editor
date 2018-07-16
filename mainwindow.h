@@ -77,6 +77,8 @@ private slots:
 
     void on_actionExport_level_as_JSON_triggered();
 
+    void on_actionSet_level_name_triggered();
+
 private:
     void closeEvent(QCloseEvent *event);
     void resizeEvent( QResizeEvent * );
